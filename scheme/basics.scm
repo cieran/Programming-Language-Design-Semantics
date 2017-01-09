@@ -48,7 +48,7 @@
   (map (lambda(fn) x) (range y)))
 
 (define (tr xs)
-  (apply map List xs))
+  (apply map list xs))
 
 (define (doubleRev xs)
   (reverse (double-all xs)))
@@ -63,5 +63,45 @@
 (define (cube x) (expt x 3))
 (define cubed(apply cube (list 2)))
 (define cubed2(apply cube '(2)))
+
+
+
+(define (after-filter predicate xs)
+    (cond [(<(length xs)2) '()]                 ;;if input is NULL or length<2 => do nothing
+          [else
+           (cond [(predicate (car xs))                                ;;check first element with predicate
+                  (cons (cadr xs) (after-filter predicate (cdr xs)))] ;;if true, store element to it's right and recursively call function on tail
+                 [else (after-filter predicate (cdr xs))])]))  
+
+
+(define (add-numbers xs)
+  (flatten(find-add xs)))
+
+(define (find-add xs)
+  (cond [(<(length xs)2) '()]
+         [else (cond [(number? (car xs))
+         (cons (car xs) (find-add (cdr xs)))]
+        [else (find-add (cdr xs))])]))
+
+(define (add-numbers2 xs)
+  (apply + (flatten xs)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
