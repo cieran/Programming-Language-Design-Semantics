@@ -17,7 +17,7 @@ counter(X,[H|T],Z) :-
 		(Q is Z+1 ),  counter(X,T,Q)
 	; 
 	counter(X,T,Z).
-/* January 2015 Manus */
+/* January 2015 Manus' Function */
 doublemember2(X,Xs) :-
 	member(X,Xs),
 	deletemember2(X,Xs,N), /*removes from list*/
