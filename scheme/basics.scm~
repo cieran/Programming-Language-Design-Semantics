@@ -1,5 +1,4 @@
 #lang scheme
-(require scheme/mpair)
 
 (define (abs x)
   (if (< x 0)
@@ -21,6 +20,11 @@
   (+ num1 num2))
 (define list1 (list 1 2 3))
 (define list2 (list 8 2 3))
+
+(define (my-list-ref lst n)
+  (if (zero? n)
+      (car lst)
+      (my-list-ref (cdr lst) (- n 1))))
 
 (define baz (list 1 20 31))
 (define (double x) (* x 2))
@@ -48,20 +52,4 @@
   (map (lambda(fn) x) (range y)))
 
 (define (tr xs)
-  (apply map List xs))
-
-(define (doubleRev xs)
-  (reverse (double-all xs)))
-
-(define (repeat2 x y)
-	(map (lambda(fn) x) (range y)))
-
-(define (repeat-list2 xs ys)
-  (repeat2 (car xs) (car ys))
-  (repeat-list2 (cdr xs) (cdr ys)))
-
-(define (cube x) (expt x 3))
-(define cubed(apply cube (list 2)))
-(define cubed2(apply cube '(2)))
-
-
+  (apply map list xs))
