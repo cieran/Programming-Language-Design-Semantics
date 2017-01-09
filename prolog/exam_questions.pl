@@ -17,13 +17,19 @@ counter(X,[H|T],Z) :-
 		(Q is Z+1 ),  counter(X,T,Q)
 	; 
 	counter(X,T,Z).
+
+
 /* January 2015 Manus' Function */
-doublemember2(X,Xs) :-
+doublemember(X,Xs) :-
 	member(X,Xs),
-	deletemember2(X,Xs,N), /*removes from list*/
+	del(X,Xs,N), /*removes from list*/
 	member(X,N).
-deletemember2(X,[X|T],T).
-deletemember2(X,[Y|T],[Y|T1]):- del(X,T,T1).
+/* Compliments of dailyfreecode */
+del(X,[X|Tail],Tail).
+del(X,[Y|Tail],[Y|Tail1]):-
+    del(X,Tail,Tail1).
+
+
 /* January 2014
 	noahDouble([1,2,3,4],[[1,2],[3,4]]).
 */
