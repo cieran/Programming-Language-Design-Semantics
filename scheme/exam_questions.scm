@@ -35,7 +35,7 @@
   (apply + (find-nums xs)))
 
 (define (find-nums xs)
-  (cond [(<(length xs)2) '()]
+  (cond [(=(length xs)0) '()]
          [else (cond [(number? (car xs))
          (cons (car xs) (find-nums (cdr xs)))]
         [else (find-nums (cdr xs))])]))
