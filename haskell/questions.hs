@@ -1,3 +1,4 @@
+-- A collection of questions and sample answers from https://wiki.haskell.org/99_questions/1_to_10
 
 concat :: [[a]] -> [a]
 concat xss = foldr (++) [] xss
