@@ -1,6 +1,17 @@
 import Data.List
 
 {- 2016 January -}
+reverseCount :: [Char] -> [Int] -> [[Char]]
+reverseCount letters numbers = reverse $ zipWith (replicate) numbers letters
+
+revCount' :: [Char] -> [Int] -> [Char]
+revCount' _ [] = []
+revCount' (c:cs) (n:ns) = (revCount' cs ns) ++ (repeat' c n)
+
+repeat' :: Char -> Int -> [Char]
+repeat' _ 0 = []
+repeat' c n = [c] ++ (repeat' c (n-1))
+
 revCount :: [Char] -> [Int] -> [String]
 revCount chars ints = reverse (repeater chars ints)
 repeater chars ints = 
