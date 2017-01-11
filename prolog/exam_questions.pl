@@ -15,6 +15,13 @@ tr([[]|_], []).
 tr(M, [Hs|M1]) :- maplist(head, M, Hs), maplist(tail, M, Ts),
     tr(Ts, M1).
 
+trans([], []). /**checks for 2 empty lists**/
+trans([H1|T1], T3) :- trans(H1, [H1|T1], T3). 
+trans([], _, []).
+trans([_|T2], M, [T3|T4]) :- lists_firsts_rests(M, T3, Ms),trans(T2, Ms, T4).
+lists_firsts_rests([], [], []).
+lists_firsts_rests([[H1|Os]|Rest], [H1|T1], [Os|Oss]) :-lists_firsts_rests(Rest, T1, Oss).
+
 % January 2015
 doublemember(_,[]).
 doublemember(X, [H|T]) :-  counter(X,[H|T],0).

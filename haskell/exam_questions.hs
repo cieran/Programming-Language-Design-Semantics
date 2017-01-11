@@ -24,6 +24,17 @@ repeater chars ints =
 mapEveryOther :: (a -> a) -> [a] -> [a]
 mapEveryOther f list = zipWith ($) (cycle[f,id]) list
 
+-- source: github.com/manusgallagher/Semantics
+mapEveryOther' :: (a -> a) -> [a] -> [a]
+mapEveryOther' _ [] = []
+mapEveryOther' f [x] = [f x]
+mapEveryOther' f (x:y:xs) = f x : y : mapEveryOther' f xs
+
+--function to explain f x : y : mapEveryOther
+doMath :: (a -> a) -> a -> a
+doMath f x = f x
+
+
 {- 2016 Autumn -}
 tr :: [[a]]->[[a]]
 tr ([]:_) = []

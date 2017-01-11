@@ -1,4 +1,4 @@
-; 2015 January
+; 2016 January
 (define (reverse-with-count xs ys))
 	(reverse (range-list xs ys))
 
@@ -8,22 +8,32 @@
 (define (multi-element element n)
 	(map (lambda (x) element) (range n)))
 
-
-
-;	(tr '((1 2 3) (4 5 6)))
-;		=> ((1 4) (2 5) (3 6))
-;	(tr '((f o x e s) (s o c k s) (r o c k s)))
-;		=> ((f s r) (o o o) (x c c) (e k k) (s s s))
+;	2016 Autumn
 (define (tr xs)
   (apply map list xs))
 
 
+
+
+; 2015 January
 (define (after-filter predicate xs)
     (cond [(<(length xs)2) '()]                 ;;if input is NULL or length<2 => do nothing
         [else
         (cond [(predicate (car xs))                                ;;check first element with predicate
               (cons (cadr xs) (after-filter predicate (cdr xs)))] ;;if true, store element to it's right and recursively call function on tail
               [else (after-filter predicate (cdr xs))])]))
+
+; 2014 January
+; (deep-fetch symbol? '(the (quick 6 fox 8 9) slick 2))
+(define (deep-fetch pred xs)
+  (go-fetch pred (flatten xs)))
+
+(define (go-fetch pred xs)
+    (cond [(=(length xs)0) (list )]
+      [else
+        (cond [(pred (car xs))
+               (cons (car xs) (deep-fetch pred (cdr xs)))]
+      [else (deep-fetch pred (cdr xs))])]))
 
 
 ; 2014 Autumn
@@ -38,3 +48,4 @@
          [else (cond [(number? (car xs))
          (cons (car xs) (find-nums (cdr xs)))]
         [else (find-nums (cdr xs))])]))
+
