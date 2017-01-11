@@ -1,4 +1,4 @@
-; 2016 January
+; 2016 January and 2015 Autumn
 (define (reverse-with-count xs ys))
 	(reverse (range-list xs ys))
 
@@ -11,8 +11,6 @@
 ;	2016 Autumn
 (define (tr xs)
   (apply map list xs))
-
-
 
 
 ; 2015 January

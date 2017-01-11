@@ -180,5 +180,8 @@ join_str(Str1, Str2, Str3) :-
 	name(Str3, StrList3).
 
 
+palindrome(L) :-
+	reverse(L, L).
+
 
 

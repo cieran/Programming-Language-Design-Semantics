@@ -1,3 +1,5 @@
 *.DS_Store
 *.scm~
 *.scm#2#
+*.rkt
+*.rkt#1#

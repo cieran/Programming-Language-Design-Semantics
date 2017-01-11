@@ -65,43 +65,10 @@
 (define cubed2(apply cube '(2)))
 
 
+(define (pal xs)
+  (check (flatten xs)))
+(define (check xs)
+  (equal? xs (reverse xs)))
 
-(define (after-filter predicate xs)
-    (cond [(<(length xs)2) '()]                 ;;if input is NULL or length<2 => do nothing
-          [else
-           (cond [(predicate (car xs))                                ;;check first element with predicate
-                  (cons (cadr xs) (after-filter predicate (cdr xs)))] ;;if true, store element to it's right and recursively call function on tail
-                 [else (after-filter predicate (cdr xs))])]))  
-
-
-(define (add-numbers xs)
-  (flatten(find-add xs)))
-
-(define (find-add xs)
-  (cond [(<(length xs)2) '()]
-         [else (cond [(number? (car xs))
-         (cons (car xs) (find-add (cdr xs)))]
-        [else (find-add (cdr xs))])]))
-
-(define (add-numbers2 xs)
-  (apply + (flatten xs)))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+(define (isEq x y)
+  (equal? x y))
